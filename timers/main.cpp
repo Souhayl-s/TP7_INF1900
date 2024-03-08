@@ -12,65 +12,50 @@ void eteindreLed(void){
 }
 
 
-
-
 int main(){
 
-    auto& DR = DDRA ; 
-
-    DR |= (1 << DDA0 | 1 << DDA1) ; // A0 et A1 en sortie pour les DELS
-
-    Timer minuterie1  = Timer(NumeroTimer::TIMER2 , Unite::MS) ; 
-
-    gTempsEcoule = 0 ; 
-    minuterie1.demarrerChronometre() ; 
-    eteindreLed();
-
-    while(gTempsEcoule < 5000){
-        // rester eteint
-    }
-    allumer();
-    minuterie1.arreterChronometre();
-    minuterie1.reprendreChronometre();
-    while(gTempsEcoule < 10000){
-        // reste allume 5s restantes
-    }
-    eteindreLed() ;
-    gTempsEcoule = 0 ;
-    minuterie1.demarrerChronometre();
-    while(gTempsEcoule < 3000){
-        // reste eteint 3s
-    }
-    allumer();
-
-    // minuterie1.reprendreChronometre();
-    // allumer();
-
-    // while(gTempsEcoule < duree ){
-    //     // rester allumer 5 secondes
-    // }
+    DDRA= (1 << DDA0 | 1 << DDA1) ; // A0 et A1 en sortie pour les DELS
     
-    // gTempsEcoule = 0 ;
-    // minuterie1.demarrerChronometre();
-    // eteindreLed();
 
-    // duree = 5000 ; 
-    // while (gTempsEcoule < duree)
-    // {
-    //     // rester eteint pendant 5 secondes
-    // }
-    // allumer();
+    Timer minuterie = Timer(NumeroTimer::TIMER2 , Unite::MS) ; 
+    minuterie.demarrerChronometre() ;
+    eteindreLed();
+    while (gTempsEcoule < 2000){
+        // rester eteint 2s
+    }
+    allumer();
+    minuterie.arreterChronometre();
+    minuterie.reprendreChronometre();
+    allumer();
+    while (gTempsEcoule < 6000){
+        // rester allume 4s
+    }
+    gTempsEcoule = 0 ;
+    minuterie.demarrerChronometre();
+    eteindreLed();
+    while (gTempsEcoule < 3000){
+        // rester eteint 3s
+    }
+    gTempsEcoule = 0 ;
+    minuterie.demarrerChronometre();
+    allumer();
+    while(gTempsEcoule < 3000){
+        // rester allume 3s
+    }
+    eteindreLed();
     
 }
+// ISR(TIMER0_COMPA_vect){
+//     ++gTempsEcoule ;
+// }
 
-ISR(TIMER0_COMPA_vect){
+ISR(TIMER2_COMPA_vect){
     ++gTempsEcoule ;
 }
 
 // ISR(TIMER1_COMPA_vect){
 //     ++gTempsEcoule ;
 // }
-
 
 
 

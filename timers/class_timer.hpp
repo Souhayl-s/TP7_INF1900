@@ -17,7 +17,11 @@ enum class NumeroTimer
     TIMER2
 };
 
-// objet qui compte en secondes par defaut
+
+// TIMER 1 : secondes et millisecondes possibles
+// TIMER 0 / TIMER 2 : millisecondes possibles uniquement
+
+
 class Timer
 {
     public:
@@ -35,11 +39,11 @@ class Timer
     private:
         Unite uniteDeTemps_ ;
         NumeroTimer numeroTimer_ ; 
-        uint8_t nCycles_ ; // frequence de variation du timer // template
-        uint8_t cycleDepart_ ; // template
+        int nCycles_ ; // frequence de variation du timer /
+        int cycleDepart_ ; 
 
-        volatile uint8_t* compteur_ ;  // template
-        volatile uint8_t* valeurComparaison_ ; ; // template
+        volatile uint8_t* compteur8bits_ ;  
+        volatile uint8_t* valeurComparaison8bits_ ; ; 
 
         volatile uint8_t* registreControleA_  ; 
         volatile uint8_t* registreControleB_  ; 
