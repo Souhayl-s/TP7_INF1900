@@ -1,4 +1,4 @@
-#include "interruptions.hpp"
+#include "interruptions_externes.hpp"
 
 void InterruptionExterne::activerInterruptionExterne(void){
     cli() ;
