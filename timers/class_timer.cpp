@@ -12,18 +12,6 @@ Timer::Timer(NumeroTimer numeroTimer , Unite uniteDeTemps):
 
 // prescaler toujours a  1024 
 void Timer::initialiserTimer(void){ 
-    cli();
-
-    if (numeroTimer_ == NumeroTimer::TIMER1){
-        TCNT1 = cycleDepart_ ; 
-        OCR1A = nCycles_ ;
-        *registreControleB_ |= (1 << WGM12 |1 << CS12 | 1 << CS10) ; 
-        *registreControleB_ &= ~(1 << WGM13 | 1 << CS11) ;         
-    }
-
-    // Activation des interruptions lors du compare match event (meme chose pour les 2 timers)
-    *registreInterruption_ |= (1 <<OCIE1A) ;
-    sei();
 }
 
 

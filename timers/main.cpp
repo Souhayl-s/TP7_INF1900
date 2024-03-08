@@ -22,34 +22,31 @@ int main(){
 
     Timer16Bits minuterie (NumeroTimer::TIMER1, Unite::SECS) ; 
 
-
-
-
-    // minuterie.demarrerChronometre() ;
-    // eteindreLed();
-    // while (gTempsEcoule < 2000){
-    //     // rester eteint 2s
-    // }
-    // allumer();
-    // minuterie.arreterChronometre();
-    // minuterie.reprendreChronometre();
-    // allumer();
-    // while (gTempsEcoule < 6000){
-    //     // rester allume 4s
-    // }
-    // gTempsEcoule = 0 ;
-    // minuterie.demarrerChronometre();
-    // eteindreLed();
-    // while (gTempsEcoule < 3000){
-    //     // rester eteint 3s
-    // }
-    // gTempsEcoule = 0 ;
-    // minuterie.demarrerChronometre();
-    // allumer();
-    // while(gTempsEcoule < 3000){
-    //     // rester allume 3s
-    // }
-    // eteindreLed();
+    minuterie.demarrerChronometre() ;
+    eteindreLed();
+    while (gTempsEcoule < 2){
+        // rester eteint 2s
+    }
+    allumer();
+    minuterie.arreterChronometre();
+    minuterie.reprendreChronometre();
+    allumer();
+    while (gTempsEcoule < 6){
+        // rester allume 4s
+    }
+    gTempsEcoule = 0 ;
+    minuterie.demarrerChronometre();
+    eteindreLed();
+    while (gTempsEcoule < 3){
+        // rester eteint 3s
+    }
+    gTempsEcoule = 0 ;
+    minuterie.demarrerChronometre();
+    allumer();
+    while(gTempsEcoule < 3){
+        // rester allume 3s
+    }
+    eteindreLed();
     
 }
 
@@ -61,9 +58,9 @@ ISR(TIMER1_COMPA_vect){
     ++gTempsEcoule ;
 }
 
-// ISR(TIMER2_COMPA_vect){
-//     ++gTempsEcoule ;
-// }
+ISR(TIMER2_COMPA_vect){
+    ++gTempsEcoule ;
+}
 
 
 
